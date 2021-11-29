@@ -1,12 +1,19 @@
 Package: SAT
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Surrogate Assisted Two-wave Case Boosting Sampling  
+Version: 0.1.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Xiaokang", "Liu", , "xiaokang.liu@pennmedicine.upenn.edu", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description: Electronic health records (EHR) enable investigation of the association between 
+    phenotypes and risk factors. However, studies solely relying on potentially error-prone 
+    EHR-derived phenotypes (i.e., surrogates) are subject to bias. Analyses of low prevalence 
+    phenotypes may also suffer from poor efficiency. For analyzing rare diseases, we develop a 
+    Surrogate Assisted Two-wave (SAT) sampling method to select a subsample for outcome 
+    validation through manual chart review subject to budget constraints. 
+    A model is then fitted based on the subsample. The subsample selected with the proposed 
+    method contains informative observations that effectively reduce the mean squared error (MSE) 
+    of the resultant estimator of the association.
+License: GPL-3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
