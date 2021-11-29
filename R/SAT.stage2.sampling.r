@@ -7,20 +7,20 @@
 #' @usage
 #' SAT.stage2.sampling(r1, n, S, Rpar = 0.5, r, stage1.index, stage1.y, X, method = "SAT-S")
 #'
-#' @param r1 pilot sample size.
+#' @param r1 pilot subsample size.
 #' @param n total sample size.
 #' @param S a binary vector of length n. Surrogate observations for all samples.
-#' @param Rpar case proportion parameter. Default is 0.5.
+#' @param Rpar case proportion parameter. Should be the same as in \code{SAT.stage1.sampling}.
 #' @param r second stage subsample size.
-#' @param stage1.index a vector of length r1. The index of pilot sampled patients or patients whose manual chart review is available.
-#' @param stage1.y a binary vector of length r1. The manual chart review results for patients in stage1.index.
-#' @param X a matrix of dimension n times p.The covariate matrix contains observations for all n samples.
+#' @param stage1.index a vector of length r1. The output of \code{SAT.stage1.sampling}, i.e., the index of pilot sampled patients.
+#' @param stage1.y a binary vector of length r1. The manual chart review results for patients in \code{stage1.index}.
+#' @param X a matrix of dimension n times p (the first column needs to be 1). The covariate matrix contains observations for all n samples.
 #'
 #' @return The function returns a list:
 #'   \item{beta.pilot}{the pilot estimator.}
 #'   \item{stage1.index}{a vector of index for patients who are selected in pilot sampling.}
 #'   \item{stage2.index}{a vector of index for patients who are selected in the second stage sampling.}
-#'   \item{stage1.weights}{a vector of weights for patients who are selected in pilot sampling.}
+#'   \item{stage1.weights}{a vector of weights used in fitting weighted logistic regression for patients who are selected in pilot sampling.}
 #'
 #'
 #' @references Liu, X., Chubak, J., Hubbard, R. A. & Chen, Y. (2021).

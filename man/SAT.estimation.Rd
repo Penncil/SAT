@@ -2,7 +2,7 @@
 % Please edit documentation in R/SAT.estimation.r
 \name{SAT.estimation}
 \alias{SAT.estimation}
-\title{SAT estimation based on pooled sample}
+\title{SAT estimation based on pooled subsample}
 \usage{
 SAT.estimation(S, X, beta.pilot, stage1.index, stage2.index, stage1.weights,
                stage1.y, stage2.y, method = "SAT-S")
@@ -10,7 +10,7 @@ SAT.estimation(S, X, beta.pilot, stage1.index, stage2.index, stage1.weights,
 \arguments{
 \item{S}{a binary vector of length n. Surrogate observations for all samples.}
 
-\item{X}{a matrix of dimension n times p.The covariate matrix contains observations for all n samples.}
+\item{X}{a matrix of dimension n times p (the first column needs to be 1). The covariate matrix contains observations for all n samples.}
 
 \item{beta.pilot}{the pilot estimator.}
 
@@ -20,9 +20,9 @@ SAT.estimation(S, X, beta.pilot, stage1.index, stage2.index, stage1.weights,
 
 \item{stage1.weights}{a vector of weights for patients who are selected in pilot sampling.}
 
-\item{stage1.y}{a binary vector of length r1. The manual chart review results for patients in stage1.index.}
+\item{stage1.y}{a binary vector of length r1. The manual chart review results for patients in \code{stage1.index}.}
 
-\item{stage2.y}{a binary vector of length r. The manual chart review results for patients in stage2.index.}
+\item{stage2.y}{a binary vector of length r. The manual chart review results for patients in \code{stage2.index}.}
 
 \item{method}{two methods are available: SAT-S or SAT-cY.}
 }
@@ -56,13 +56,13 @@ S <- rbinom(n, 1, pr_s)
 stage1.index <- SAT.stage1.sampling(r1 = 400, n = 1e5, S, Rpar = 0.5)
 stage1.y <- Y[stage1.index]
 stage2 <- SAT.stage2.sampling(r1 = 400, n = 1e5, S, Rpar = 0.5, r = 800,
-                              stage1.index, stage1.y, X, method = "SAT-S")
+                              stage1.index, stage1.y, X, method = "SAT-cY")
 stage2.y <-  Y[stage2$stage2.index]
 SAT.est <- SAT.estimation(S, X, beta.pilot = stage2$beta.pilot, stage1.index = stage1.index,
                stage2.index = stage2$stage2.index,
                stage1.weights = stage2$stage1.weights,
                stage1.y = stage1.y, stage2.y = stage2.y,
-               method = "SAT-S")
+               method = "SAT-cY")
 
 }
 \references{

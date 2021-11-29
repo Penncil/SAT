@@ -1,5 +1,5 @@
 #' @title
-#' SAT estimation based on pooled sample
+#' SAT estimation based on pooled subsample
 #'
 #' @description
 #' This function implements the final SAT estimation based on data pooled from two stages of sampling.
@@ -11,13 +11,13 @@
 #'
 #'
 #' @param S a binary vector of length n. Surrogate observations for all samples.
-#' @param X a matrix of dimension n times p.The covariate matrix contains observations for all n samples.
+#' @param X a matrix of dimension n times p (the first column needs to be 1). The covariate matrix contains observations for all n samples.
 #' @param beta.pilot the pilot estimator.
 #' @param stage1.index a vector of length r1. The index of pilot sampled patients.
 #' @param stage2.index a vector of length r. The index of second-stage sampled patients.
 #' @param stage1.weights a vector of weights for patients who are selected in pilot sampling.
-#' @param stage1.y a binary vector of length r1. The manual chart review results for patients in stage1.index.
-#' @param stage2.y a binary vector of length r. The manual chart review results for patients in stage2.index.
+#' @param stage1.y a binary vector of length r1. The manual chart review results for patients in \code{stage1.index}.
+#' @param stage2.y a binary vector of length r. The manual chart review results for patients in \code{stage2.index}.
 #' @param method two methods are available: SAT-S or SAT-cY.
 #'
 #'
@@ -52,13 +52,13 @@
 #' stage1.index <- SAT.stage1.sampling(r1 = 400, n = 1e5, S, Rpar = 0.5)
 #' stage1.y <- Y[stage1.index]
 #' stage2 <- SAT.stage2.sampling(r1 = 400, n = 1e5, S, Rpar = 0.5, r = 800,
-#'                               stage1.index, stage1.y, X, method = "SAT-S")
+#'                               stage1.index, stage1.y, X, method = "SAT-cY")
 #' stage2.y <-  Y[stage2$stage2.index]
 #' SAT.est <- SAT.estimation(S, X, beta.pilot = stage2$beta.pilot, stage1.index = stage1.index,
 #'                stage2.index = stage2$stage2.index,
 #'                stage1.weights = stage2$stage1.weights,
 #'                stage1.y = stage1.y, stage2.y = stage2.y,
-#'                method = "SAT-S")
+#'                method = "SAT-cY")
 #'
 #' @export
 

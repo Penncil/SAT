@@ -4,9 +4,9 @@
 #' @description
 #' This function calculates the MLE for a weighted logistic regression.
 #'
-#' @param x the input covariate matrix
-#' @param y the input response vector
-#' @param w the weight vector
+#' @param x the covariate matrix of dimension n times p.
+#' @param y a binary response vector of length n.
+#' @param w a weight vector of length n.
 
 
 getMLE <- function (x, y, w){

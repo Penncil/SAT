@@ -2,24 +2,30 @@
 % Please edit documentation in R/SAT.stage1.sampling.r
 \name{SAT.stage1.sampling}
 \alias{SAT.stage1.sampling}
-\title{Pilot sampling with SGS}
+\title{Pilot sampling by SGS}
 \usage{
 SAT.stage1.sampling(r1, n, S, Rpar = 0.5)
 }
 \arguments{
-\item{r1}{pilot sample size.}
+\item{r1}{pilot subsample size.}
 
 \item{n}{total sample size.}
 
-\item{S}{surrogate observations for all samples.}
+\item{S}{a binary vector of length n. Surrogate observations for all samples.}
 
-\item{Rpar}{case proportion parameter. Default is 0.5.}
+\item{Rpar}{case proportion parameter. The recommended range is (0.3, 0.6), and default is 0.5.}
 }
 \value{
-The function returns a vector of patient index for whom the manual chart reviews are collected.
+The function returns a vector of patient index for whom the manual chart reviews are going to be collected.
 }
 \description{
 This function implements the stage 1 subsampling of SAT by SGS method.
+}
+\details{
+The region of Rpar that corresponds to lower MSEs is (0.3, 0.5) for case prevalence (i.e., P(Y=1|X)) around 4\%.
+To avoid failures in the estimation when the case prevalence is low and r1 is small, a slightly
+larger Rpar in (0.5, 0.6) can be used without compromising the performance of SAT. Using Rpar=0.5
+is a safe choice for most situations.
 }
 \examples{
 library(SAT)

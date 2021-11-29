@@ -7,11 +7,11 @@
 getMLE(x, y, w)
 }
 \arguments{
-\item{x}{the input covariate matrix}
+\item{x}{the covariate matrix of dimension n times p.}
 
-\item{y}{the input response vector}
+\item{y}{a binary response vector of length n.}
 
-\item{w}{the weight vector}
+\item{w}{a weight vector of length n.}
 }
 \description{
 This function calculates the MLE for a weighted logistic regression.
