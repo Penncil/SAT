@@ -9,7 +9,7 @@
 
 ## Description
 
-This README is prepared for journal peer review of the surrogate assisted two-wave (SAT) case boosting sampling method paper. SAT is proposed to simultaneously solve two commonly co-existing issues in Electronic health records (EHR) based association studies, i.e., the bias in association estimation brought by potentially error-prone EHR-derived phenotypes (i.e., surrogates) and the efficiency loss caused by low prevalence phenotypes (e.g., rare disease). Target on improving estimation accuracy, SAT selects a subsample for outcome validation through manual chart review subject to budget constraints, and a model is then fitted based on the subsample.
+This README is prepared for the package SAT of implementing the surrogate assisted two-wave (SAT) case boosting sampling method. SAT is proposed to simultaneously solve two commonly co-existing issues in Electronic health records (EHR) based association studies, i.e., the bias in association estimation brought by potentially error-prone EHR-derived phenotypes (i.e., surrogates) and the efficiency loss caused by low prevalence phenotypes (e.g., rare disease). Target on improving estimation accuracy, SAT selects a subsample for outcome validation through manual chart review subject to budget constraints, and a model is then fitted based on the subsample only.
 
 To demonstrate its usage, in this repository we provide the codes to implement the method and reproduce the simulation results displayed in the paper. This README also introduces a simple example to implement SAT.  
 

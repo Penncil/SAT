@@ -30,25 +30,15 @@ is a safe choice for most situations.
 \examples{
 library(SAT)
 set.seed(0)
-n <- 1e5
-beta0  <- c(1/5, 0, 0, 1/2, rep(1/2, 4))
-d <- length(beta0)
 
-X <- rnorm(n*(d-1), -1.5, 1)
-X <- matrix(X, nrow = n, ncol = d - 1)
-X <- cbind(1, X)
+colnames(lung_cancer)
+X <- cbind(1, lung_cancer[,3:5])
+Y <- lung_cancer[,1]
+S <- lung_cancer[,2]
 
-P  <- 1 - 1 / (1 + exp(X \%*\% beta0))
-Y  <- rbinom(n, 1, P)
-
-a1 <- 0.85 # sensitivity
-a2 <- 0.95 # specificity
-pr_s <- vector(mode = "numeric", length = n)
-pr_s <- a1*(Y==1) + (1-a2)*(Y==0)
-S <- rbinom(n, 1, pr_s)
-
+# pilot sampling
 stage1.index <- SAT.stage1.sampling(r1 = 400, n = 1e5, S, Rpar = 0.5)
-length(stage1.index)
+head(stage1.index)
 
 }
 \references{
