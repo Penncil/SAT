@@ -5,7 +5,7 @@
 
 1. Description 
 2. SAT workflow
-3. Package installation
+3. Package installation and example
 
 ## Description
 
@@ -16,13 +16,12 @@ This README is prepared for the package SAT of implementing the surrogate assist
 ## SAT Workflow
 ![](Figure0.png)
 
-At stage 1, for enriching cases we apply surrogate-guided sampling (SGS) to obtain a pilot subsample of size $n_1$, for which we collect the true phenotypes and use them to obtain a pilot estimator for the association parameters. At stage 2, based on the pilot estimator, the covariates, and the surrogate phenotype, we compute the SAT sampling probabilities which target controlling MSE, and then apply them to obtain the second-stage subsample of size $n_2$, for which the true phenotypes are collected. The final estimator is obtained by fitting a weighted logistic regression on the pooled subsample of size $n_1+n_2$ with their true phenotypes.
+At stage 1, for enriching cases we apply surrogate-guided sampling (SGS) to obtain a pilot subsample of size n1, for which we collect the true phenotypes and use them to obtain a pilot estimator for the association parameters. At stage 2, based on the pilot estimator, the covariates, and the surrogate phenotype, we compute the SAT sampling probabilities which target controlling MSE, and then apply them to obtain the second-stage subsample of size n2, for which the true phenotypes are collected. The final estimator is obtained by fitting a weighted logistic regression on the pooled subsample of size n1 + n2 with their true phenotypes.
 
-## Run SAT example 
+## Package installation and example
 What we need:
 1. A dataset including risk factors and surrogates for the full cohort;
-2. R software;
-3. Download and install R package [SAT](https://github.com/Penncil/SAT).
+2. Download and install R package [SAT](https://github.com/Penncil/SAT).
 
 The example we used here is a synthetic dataset of lung cancer. The true phenotype that is of our interest is the survival status of patients with lung cancer. The study includes 10,000 patients with their survival status, surrogate phenotypes, age at diagnosis, tumor stage and gender. Here we note that in practice the true phenotype $Y$ (i.e., the survival status of patients in this lung cancer example) of the full cohort is not available, and here we make these observations be available for all patients to simulate the proposed sampling procedure.
 
@@ -35,7 +34,7 @@ library(devtools)
 devtools::install_github("penncil/SAT")
 library(SAT)
 ```
-Till now, we've already installed the SAT package. Next, based on the dataset we use SAT functions to select "informative" samples for which we collect true phenotypes by manual chart review. 
+With the installed SAT package, next we use SAT functions to select "informative" samples for which we collect true phenotypes by manual chart review. 
 
 Step 1: 1st stage subsampling
 ```{r}
